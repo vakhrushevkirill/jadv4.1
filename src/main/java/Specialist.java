@@ -2,7 +2,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Specialist implements Runnable{
     private ConcurrentLinkedQueue<String> callQueue;
-
+    final private int timeForQuest = 3000;
     public Specialist(ConcurrentLinkedQueue<String> callQueue){
         this.callQueue = callQueue;
     }
@@ -15,7 +15,7 @@ public class Specialist implements Runnable{
 
                 System.out.println("Сотрудник " + Thread.currentThread().getName() + " начал работу над вопросом по звонку " + call);
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(timeForQuest);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
