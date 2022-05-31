@@ -2,8 +2,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ATC implements Runnable{
     private ConcurrentLinkedQueue<String> callQueue;
-    final private int calls = 60;
-    final private int timeoutCalls = 60;
+    final static private int CALLS = 60;
+    final static private int TIMEOUT_CALLS = 60;
 
 
     public ATC(ConcurrentLinkedQueue<String> callQueue){
@@ -12,11 +12,11 @@ public class ATC implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < calls; i++){
+        for (int i = 0; i < CALLS; i++){
             this.callQueue.add(Integer.toString(i));
             System.out.println("Вызов..."  + Integer.toString(i));
             try {
-                Thread.sleep(timeoutCalls);
+                Thread.sleep(TIMEOUT_CALLS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
